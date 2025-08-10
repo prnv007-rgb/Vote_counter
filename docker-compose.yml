@@ -1,0 +1,19 @@
+services:
+  vote-ui:
+    build: ./vote-ui
+    ports:
+      - "80:80"
+    depends_on:
+      - vote-counter
+
+  vote-counter:
+    build: ./vote-counter
+    ports:
+      - "8080:8080"
+    depends_on:
+      - vote-logger
+
+  vote-logger:
+    build: ./vote-logger
+    ports:
+      - "4567:4567"
